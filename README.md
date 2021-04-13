@@ -119,7 +119,7 @@ Sintaks yang digunakan untuk insert data sebagai berikut:
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->insert($parameters1);``
 > 
-> ``}`
+> ``}``
 
 Sintaks diatas akan membentuk query **INSERT INTO 'namatable' VALUES (data dari parameters1)**. Variabel parameters1 adalah data yang akan diinsert.
 
@@ -143,7 +143,7 @@ Sintaks yang digunakan untuk delete data sebagai berikut:
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->delete(['atributtabel' => $parameters1]);``
 > 
-> ``}`
+> ``}``
 
 Sintaks diatas akan membentuk query **DELETE 'namatable' WHERE atributtabel = parameters1**. Variabel parameters1 adalah data mana yang akan didelete berdasarkan atribut tabel (biasanya berdasarkan primary key table).
 
@@ -155,7 +155,7 @@ Sintaks yang digunakan untuk select data sebagai berikut:
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->select("atribut yang dipanggil")->get()->asObject();``
 > 
-> ``}`
+> ``}``
 
 Sintaks diatas akan membentuk query **SELECT atribut yang dipanggil FROM namatable** dan datanya akan direturn sebagai object. Jika ingin data yang dipanggil direturn sebagai array data, maka ganti clausa asObject() dengan asArray() sebagai berikut:
 
@@ -163,7 +163,7 @@ Sintaks diatas akan membentuk query **SELECT atribut yang dipanggil FROM namatab
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->select("atribut yang dipanggil")->get()->asArray();``
 > 
-> ``}`
+> ``}``
 
 - Select data menggunakan klausa where
 
@@ -173,7 +173,7 @@ Jika ingin menambahkan klausa where, caranya adalah sebagai berikut:
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->select("atribut yang dipanggil")->where(['atributtabel' => $parameters])->get()->asObject();``
 > 
-> ``}`
+> ``}``
 
 Sintaks diatas akan membentuk query **SELECT atribut yang dipanggil FROM namatable WHERE atributtabel = parameters**
 
@@ -185,7 +185,7 @@ Jika ingin menambahkan klausa group by, caranya adalah sebagai berikut:
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->select("atribut yang dipanggil")->groupBy('atributtabel')->get()->asObject();``
 > 
-> ``}`
+> ``}``
 
 Sintaks diatas akan membentuk query **SELECT atribut yang dipanggil FROM namatable GROUP BY atributtabel**
 
@@ -197,7 +197,7 @@ Jika ingin menambahkan klausa order by, caranya adalah sebagai berikut:
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->select("atribut yang dipanggil")->orderBy('atributtabel')->get()->asObject();``
 > 
-> ``}`
+> ``}``
 
 Sintaks diatas akan membentuk query **SELECT atribut yang dipanggil FROM namatable ORDER BY atributtabel**. Jika ingin sorting secara descending, maka tambahkan klausa 'DESC' pada pemanggilan method orderBy
 
@@ -205,6 +205,6 @@ Sintaks diatas akan membentuk query **SELECT atribut yang dipanggil FROM namatab
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->select("atribut yang dipanggil")->orderBy('atributtabel', 'DESC')->get()->asObject();``
 > 
-> ``}`
+> ``}``
 
 Penggunaan parameter disesuaikan dengan kebutuhan method, dan nama function serta nama variabel parameter pula disesuaikan dengan keinginan kalian.
