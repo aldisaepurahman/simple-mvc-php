@@ -27,6 +27,10 @@ class DBBuilder{
     private $join; //database query join attribute
 
     private $where; //database query where attribute
+    
+    private $groupBy; //database query group by attribute
+
+    private $orderBy; //database query order by attribute
 
     private $conditions = ['<', '>', '<=', '>=', '!=']; //database query where conditions attributes
 
@@ -128,6 +132,25 @@ class DBBuilder{
             //return the where syntax
             return $this;
         }
+    }
+    //generate group by query builder
+    public function groupBy($cond)
+    {
+        //set group by query builder and return it
+        $this->groupBy = " GROUP BY $cond";
+        return $this;
+    }
+    //generate order by query builder
+    public function orderBy($cond, $sort = '')
+    {
+        //set order by query builder
+        $this->orderBy = " ORDER BY $cond";
+        //if sort is not null and sort type is descending, join with builder
+        if ($sort != NULL && strcasecmp($sort, "DESC") == 0) {
+            $this->orderBy .= " $sort";
+        }
+        //return order by builder
+        return $this;
     }
     //generate insert query builder
     public function insert($data)
@@ -266,6 +289,8 @@ class DBBuilder{
         $this->builder = NULL;
         $this->join = NULL;
         $this->where = NULL;
+        $this->groupBy = NULL;
+        $this->orderBy = NULL;
     }
 }
 
