@@ -208,3 +208,17 @@ Sintaks diatas akan membentuk query **SELECT atribut yang dipanggil FROM namatab
 > ``}``
 
 Penggunaan parameter disesuaikan dengan kebutuhan method, dan nama function serta nama variabel parameter pula disesuaikan dengan keinginan kalian.
+
+- Memanggil gambar, CSS, javascript dan lainnya
+
+Di project ini sudah disediakan folder assets, dimana didalamnya kalian bisa menggunakan folder tersebut untuk memasukkan gambar, CSS, javascript, dan lainnya. Cara memanggilnya adalah sebagai berikut
+
+> ``<img src="<?= base_url.'/assets/namafile.jpg' ?>">``
+
+- Hyperlink dalam view ke view lain
+
+Cara pemanggilannya hampir sama dengan memanggil gambar, caranya adalah:
+
+> ``<a href="<?= base_url.'/namacontroller/namamethod/'.$parameter ?>">Pindah views</a>``
+
+Variabel parameter sendiri disesuaikan dengan kebutuhan dari method yang dipanggil, jika tidak diperlukan maka tidak perlu dideclare.
