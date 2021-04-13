@@ -30,5 +30,23 @@ class Controller
         //return model object
         return new $model;
     }
+    //redirect method to another page
+    public function redirectTo($page)
+    {
+        //remove slash from the left side of page string
+        $page = ltrim($page, '/');
+        //if string contains index clause, remove it
+        if (strpos($page, 'index')) {
+            $page = str_replace('index', '', $page);
+        }
+        //if page is not null, join with base url and redirect it
+        if ($page != NULL) {
+            header('Location: '.base_url.$page);
+        }
+        //if page is null, redirect to base url
+        else {
+            header('Location: '.base_url);
+        }
+    }
 }
 ?>
