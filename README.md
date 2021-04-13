@@ -131,7 +131,7 @@ Sintaks yang digunakan untuk update data sebagai berikut:
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``return $this->db->table($this->table)->update($parameters1, ['atributtabel' => $parameters2]);``
 > 
-> ``}`
+> ``}``
 
 Sintaks diatas akan membentuk query **UPDATE 'namatable' SET atribut yang diganti pada parameters1 WHERE atributtabel = parameters2**. Variabel parameters1 adalah data yang akan diupdate dan parameters2 adalah data mana yang akan diupdate berdasarkan atribut tabel (biasanya berdasarkan primary key table).
 
