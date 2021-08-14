@@ -12,6 +12,6 @@ define('base_url', 'http://localhost/simplemvc/');
 define('host', 'localhost'); //database host
 define('username', 'root'); //database username
 define('password', ''); //database password
-define('database', ''); //database name
+define('database', 'perkuliahan'); //database name
 
 ?>

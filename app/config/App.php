@@ -10,8 +10,8 @@
 
 class App
 {
-    protected $controller = 'Perkuliahan'; //controller name
-    protected $method = 'index'; //controller method
+    protected $controller = ''; //controller name
+    protected $method = ''; //controller method
     protected $params = []; //controller parameter from method
 
     public function __construct() {
@@ -22,6 +22,9 @@ class App
             $this->controller = ucfirst($url[0]);
             unset($url[0]); //unset from array of url
         }
+        else{
+            $this->controller = 'Perkuliahan';
+        }
         //call the controller and instantiate it
         require_once 'app/controllers/'.$this->controller.'.php';
         $this->controller = new $this->controller;
@@ -31,13 +34,21 @@ class App
                 $this->method = $url[1];
                 unset($url[1]); //unset from array of url
             }
+            else{
+                $this->controller->view('errors/404');
+            }
+        }
+        else{
+            $this->method = 'index';
         }
         /* if the url contains parameters, set parameters */
         if (!empty($url)) {
             $this->params = array_values($url);
         }
-        //call method with parameters
-        call_user_func_array([$this->controller, $this->method], $this->params);
+        if ($this->controller && $this->method) {
+            //call method with parameters
+            call_user_func_array([$this->controller, $this->method], $this->params);
+        }
     }
     /* url parsing method */
     public function parseURL()
