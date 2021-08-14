@@ -8,7 +8,7 @@
  * Description  : create perkuliahan controller as controller child
 *********************/
 
-class Perkuliahan extends Controller
+class Kuliah extends Controller
 {
     private $mahasiswa;
 
@@ -63,10 +63,10 @@ class Perkuliahan extends Controller
         ];
 
         if ($this->mahasiswa->insert($data)) {
-            $this->redirectTo('/');
+            $this->redirectTo('kuliah');
         }
         else{
-            $this->redirectTo('perkuliahan/create');
+            $this->redirectTo('kuliah/create');
         }
     }
 
@@ -80,20 +80,20 @@ class Perkuliahan extends Controller
         ];
 
         if ($this->mahasiswa->update($data, $nim)) {
-            $this->redirectTo('/');
+            $this->redirectTo('kuliah');
         }
         else{
-            $this->redirectTo('perkuliahan/edit/'.$nim);
+            $this->redirectTo('kuliah/edit/'.$nim);
         }
     }
 
     public function delete($nim)
     {
         if ($this->mahasiswa->delete($nim)) {
-            $this->redirectTo('/');
+            $this->redirectTo('kuliah');
         }
         else{
-            $this->redirectTo('/');
+            $this->redirectTo('kuliah');
         }
     }
 }
