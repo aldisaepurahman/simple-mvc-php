@@ -27,7 +27,7 @@ class DBBuilder{
     private $join; //database query join attribute
 
     private $where; //database query where attribute
-    
+
     private $groupBy; //database query group by attribute
 
     private $orderBy; //database query order by attribute
@@ -60,21 +60,16 @@ class DBBuilder{
     {
         $this->builder = "SELECT ";
         //if the data is array, implode it
-        if (is_array($data)) {
-            $this->builder .= implode(",", $data);
-        }
+        if (is_array($data)) $this->builder .= implode(",", $data);
         //if the data is string, join it
-        else if(is_string($data)){
-            $this->builder .= $data;
-        }
+        else if(is_string($data)) $this->builder .= $data;
         //return the select syntax
         return $this;
     }
     //generate join query builder
     public function join($table, $foreign, $arrow = NULL)
     {
-        //if join arrow is not null, switch it
-        if ($arrow != NULL) {
+        if ($arrow != NULL) { //if join arrow is not null, switch it
             switch ($arrow) {
                 //if arrow is left, generate to left join
                 case "left":
@@ -90,20 +85,16 @@ class DBBuilder{
                     break;
             }
         }
-        //if arrow is null, generate to inner join
-        else $this->join .= " JOIN ";
+        else $this->join .= " JOIN "; //if arrow is null, generate to inner join
         //join with the table and its foreign keys
         $this->join .= $table." ON ".$foreign;
-        //return the join syntax
-        return $this;
+        return $this; //return the join syntax
     }
     //generate where query builder
     public function where($cond)
     {
         //if the condition is not array, return error
-        if (!is_array($cond)) {
-            return "Where conditions must be arrays";
-        }
+        if (!is_array($cond)) return "Where conditions must be arrays";
         //if the condition is array
         else{
             $this->where = " WHERE ";
@@ -170,9 +161,7 @@ class DBBuilder{
     public function update($data, $where)
     {
         //if data or where conditions is not array, return error
-        if (!is_array($data) OR !is_array($where)) {
-            return "Update data and where clause must be arrays";
-        }
+        if (!is_array($data) OR !is_array($where)) return "Update data and where clause must be arrays";
         //if both data and where conditions is array
         else{
             //generate where syntax
@@ -198,9 +187,7 @@ class DBBuilder{
     public function delete($where)
     {
         //if where conditions is not array, return error
-        if (!is_array($where)) {
-            return "Where clause must be arrays";
-        }
+        if (!is_array($where)) return "Where clause must be arrays";
         //if where conditions is array
         else{
             //generate where syntax and join with delete query
@@ -217,13 +204,13 @@ class DBBuilder{
         //join select builder with from and table name
         $this->query = $this->builder." FROM ". $this->table;
         //if the join syntax is not null, join it
-        if ($this->join != NULL) {
-            $this->query .= $this->join;
-        }
+        if ($this->join != NULL) $this->query .= $this->join;
         //if the where conditions is not null, join it
-        if($this->where != NULL){
-            $this->query .= $this->where;
-        }
+        if($this->where != NULL) $this->query .= $this->where;
+        //if the group by conditions is not null, join it
+        if ($this->groupBy != NULL) $this->query .= $this->groupBy;
+        //if the order by conditions is not null, join it
+        if ($this->orderBy != NULL) $this->query .= $this->orderBy;
         //return perfect select query
         return $this;
     }
