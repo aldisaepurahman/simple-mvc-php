@@ -22,10 +22,37 @@ class Mahasiswa extends Model
         parent::__construct();
     }
 
-    public function getMahasiswa()
+    public function getMahasiswa($nim = false)
     {
-        return $this->db->table($this->table)->select("*")
-        ->where(['angkatan' => '2019'])->get()->asObject();
+        if ($nim) {
+            return $this->db->table($this->table)->select("*")
+            ->where(['nim' => $nim])->get()->asObject();
+        }
+        else{
+            return $this->db->table($this->table)->select("*")->get()->asObject();
+        }
+        /** bisa juga cara aksesnya seperti berikut */
+        // $this->db->table($this->table);
+        // $this->db->select("*");
+        // $this->db->where(['angkatan' => '2019']);
+        // $this->db->get();
+
+        // return $this->db->asObject();
+    }
+
+    public function insert($data)
+    {
+        return $this->db->table($this->table)->insert($data);
+    }
+
+    public function update($data, $nim)
+    {
+        return $this->db->table($this->table)->update($data, ['nim' => $nim]);
+    }
+
+    public function delete($nim)
+    {
+        return $this->db->table($this->table)->delete(['nim' => $nim]);
     }
 }
 
